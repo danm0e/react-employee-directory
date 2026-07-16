@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { MockedProvider } from "@apollo/client/testing";
 import { AddEmployeeForm } from "./AddEmployeeForm";
 
 const meta: Meta<typeof AddEmployeeForm> = {
@@ -6,6 +7,13 @@ const meta: Meta<typeof AddEmployeeForm> = {
   component: AddEmployeeForm,
   tags: ["autodocs"],
   parameters: { layout: "padded" },
+  decorators: [
+    (Story) => (
+      <MockedProvider mocks={[]} addTypename={false}>
+        <Story />
+      </MockedProvider>
+    ),
+  ],
 };
 
 export default meta;
