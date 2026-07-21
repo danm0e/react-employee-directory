@@ -48,12 +48,36 @@
 
 You'll build an **Employee Directory** app — the same repo, extended each session.
 
-| Session       | Focus                                              |
-| ------------- | -------------------------------------------------- |
-| **1 (today)** | React foundations, TypeScript, Tailwind, Storybook |
-| **2**         | Data fetching, GraphQL, Apollo Client              |
-| **3**         | Forms, validation, React Hook Form + Zod           |
-| **4**         | Testing, performance, production patterns          |
+| Session       | Focus                                               |
+| ------------- | --------------------------------------------------- |
+| **1 (today)** | React foundations, TypeScript, Tailwind, Storybook  |
+| **2**         | State management, data fetching, forms & validation |
+| **3**         | Testing & accessibility                             |
+| **4**         | GraphQL, API patterns & architecture                |
+
+**Session 1 (Today) — React Foundations**
+
+- TypeScript & Tailwind
+- Storybook
+- Core components
+
+**Session 2 — State, Data & Forms**
+
+- State management
+- Data fetching
+- Forms & validation
+
+**Session 3 — Testing & Accessibility**
+
+- RTL & Playwright
+- Testing philosophy
+- A11Y & WCAG
+
+**Session 4 — GraphQL, API Patterns & Architecture**
+
+- GraphQL 101
+- Apollo Client
+- Architectural patterns
 
 **How it works:** Sessions are trainer-led demos. The repo is your homework. Each session has a `session-N-start` branch — that's your starting point.
 
