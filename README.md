@@ -2,7 +2,7 @@
 
 A React training project built across a 4-session programme for backend engineers making their first hands-on steps with React, TypeScript, and modern front-end tooling.
 
-![Employee Directory app preview](sessions/app-preview.png)
+![Employee Directory app preview](docs/app-preview.png)
 
 ## Project Overview
 
