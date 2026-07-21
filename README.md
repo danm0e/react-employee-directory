@@ -2,6 +2,8 @@
 
 A React training project built across a 4-session programme for backend engineers making their first hands-on steps with React, TypeScript, and modern front-end tooling.
 
+![Employee Directory app preview](sessions/app-preview.png)
+
 ## Project Overview
 
 The Employee Directory lets you browse, search, and add employees. It is a single feature intentionally kept narrow so each session builds on the last without introducing unrelated complexity.
@@ -20,7 +22,7 @@ The Employee Directory lets you browse, search, and add employees. It is a singl
 | Vite + React + TypeScript      | Application framework (strict mode)           |
 | Tailwind CSS v3                | Utility-first styling                         |
 | React Router v6                | Client-side routing                           |
-| TanStack Query v5              | Server state and data fetching (Sessions 1–3) |
+| TanStack Query v5              | Server state and data fetching (Sessions 2–3) |
 | React Hook Form + Zod          | Forms and validation (Sessions 2–4)           |
 | Storybook v8                   | Component documentation                       |
 | Vitest + React Testing Library | Unit and integration tests                    |
