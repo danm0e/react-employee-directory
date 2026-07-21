@@ -1811,16 +1811,6 @@ npm run storybook
 
 ---
 
-### Session 2 — Data Fetching + GraphQL
-
-- Custom hooks with real API calls
-- GraphQL basics — queries, schema, variables
-- Apollo Client — `useQuery`, `useMutation`, `ApolloProvider`
-- Loading and error states as first-class UI concerns
-- Connecting `EmployeeListPage` to the live API
-
----
-
 **SPEAKER NOTES**
 
 **What:** Clear homework with concrete steps, and a preview that connects today's work to Session 2.
