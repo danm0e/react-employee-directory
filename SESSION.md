@@ -5,7 +5,7 @@
 - **`Employee` type** — `src/types/employee.ts` defines the interface used throughout the app
 - **Service layer** — `src/services/api.ts` wraps `fetch` calls to JSONPlaceholder
 - **TanStack Query hooks** — `useEmployees` and `useEmployee` handle caching and state
-- **`EmployeeCard` component** — styled card with name, department, email, phone
+- **`EmployeeCard` component** — styled card with name, company name, email, phone
 - **`EmployeeList` component** — responsive grid of cards with an empty-state message
 - **`EmployeeListPage`** — real data, client-side search, navigates to detail on click
 - **`EmployeeDetailPage`** — reads `:id` from the URL, renders full profile, back navigation
