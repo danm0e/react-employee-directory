@@ -1,7 +1,18 @@
-// This file is intentionally minimal.
-// You will define the Employee type here during Session 1.
-//
-// Hint: start with the shape that JSONPlaceholder /users returns:
-//   id, name, email, phone, website, company { name }, address { street, suite, city, zipcode }
+export interface Employee {
+  id: number;
+  name: string;
+  email: string;
+  phone?: string;
+  website?: string;
+  company: {
+    name: string;
+  };
+  address?: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+  };
+}
 
 export {};
