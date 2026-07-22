@@ -1,0 +1,58 @@
+import type { Employee } from "../types/employee";
+
+export const employees: Employee[] = [
+  {
+    id: 1,
+    name: "Alice Johnson",
+    email: "alice.johnson@example.com",
+    phone: "+1-555-123-4567",
+    website: "alicejohnson.dev",
+    company: { name: "Acme Technologies" },
+    address: { street: "123 Maple St", suite: "Suite 201", city: "New York", zipcode: "10001" },
+  },
+  {
+    id: 2,
+    name: "Brian Smith",
+    email: "brian.smith@example.com",
+    phone: "+1-555-234-5678",
+    website: "briansmith.dev",
+    company: { name: "Globex Corporation" },
+    address: { street: "200 Commerce Way", suite: "Floor 4", city: "Boston", zipcode: "02101" },
+  },
+  {
+    id: 3,
+    name: "Carla Martinez",
+    email: "carla.martinez@example.com",
+    phone: "+1-555-987-6543",
+    website: "carlamartinez.io",
+    company: { name: "Initech" },
+    address: { street: "456 Oak Ave", suite: "Apt 5B", city: "Chicago", zipcode: "60601" },
+  },
+  {
+    id: 4,
+    name: "David Lee",
+    email: "david.lee@example.com",
+    phone: "+1-555-345-6789",
+    website: "davidlee.dev",
+    company: { name: "Umbrella Solutions" },
+    address: { street: "789 Pine Rd", suite: "Floor 3", city: "Seattle", zipcode: "98101" },
+  },
+  {
+    id: 5,
+    name: "Emma Wilson",
+    email: "emma.wilson@example.com",
+    phone: "+1-555-222-3344",
+    website: "emmawilson.io",
+    company: { name: "Wayne Enterprises" },
+    address: { street: "1 Wayne Manor Dr", suite: "Penthouse", city: "Gotham", zipcode: "07001" },
+  },
+  {
+    id: 6,
+    name: "Frank Nguyen",
+    email: "frank.nguyen@example.com",
+    phone: "+1-555-456-7890",
+    website: "franknguyen.dev",
+    company: { name: "Stark Industries" },
+    address: { street: "321 Cedar Blvd", suite: "Suite 400", city: "Austin", zipcode: "73301" },
+  },
+];
