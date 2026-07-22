@@ -164,7 +164,7 @@ src/
 
 **What:** React is a UI library, not a full framework. It handles rendering only.
 
-**Why it matters:** Engineers often arrive expecting a "full stack JS framework." Clarifying the scope helps them understand why they'll see lots of companion libraries (React Router, Apollo, Zod) rather than one giant framework.
+**Why it matters:** Engineers often arrive expecting a "full stack JS framework." Clarifying the scope helps them understand why they'll see lots of companion libraries (React Router, TanStack Query, Zod) rather than one giant framework.
 
 **Ask the room:** "Has anyone worked in a project where React was used but something felt wrong architecturally — like too much going on in one component?"
 
@@ -193,7 +193,7 @@ src/
 **In this project:**
 
 - Routing → React Router v6
-- Data → Apollo Client (GraphQL)
+- Data → TanStack Query (REST)
 - Styling → Tailwind CSS
 - Forms → React Hook Form + Zod
 
@@ -502,7 +502,7 @@ This type is the **single source of truth** for the Employee shape across the en
 
 **Why it matters:** This is the same discipline as a shared type contract or DTO. Define the shape in one place and let the compiler enforce correctness everywhere it's used.
 
-**Ask the room:** "Where do the rest of the fields come from? They're fetched from a GraphQL API — we'll connect that in Session 2. Today we work with the type."
+**Ask the room:** "Where do the rest of the fields come from? They're fetched from the JSONPlaceholder REST API using TanStack Query — we'll connect that in Session 2. Today we work with the type."
 
 **Transition:** Now let's update EmployeeCard to accept the full Employee type as a prop.
 
@@ -837,7 +837,7 @@ useEffect(() => {
 
 Without cleanup, a fetch that resolves after the component unmounts tries to call `setEmployee` on nothing — a memory leak and a React warning.
 
-> In our project, Apollo Client handles this via `useQuery`. Session 2 covers that in detail.
+> In our project, TanStack Query handles this via `useQuery`. Session 2 covers that in detail.
 
 ---
 
@@ -935,7 +935,7 @@ const Button = () => {
 
 **Why it matters:** Prop drilling is a genuine pain point in large React trees. Context is the built-in solution; for complex global state there are libraries (Zustand, Redux), but context covers most intra-feature cases.
 
-**Ask the room:** "What does Session 2 use as its context wrapper? `ApolloProvider` in `App.tsx` — that's context. Apollo uses it to make the client available everywhere."
+**Ask the room:** "What does Session 2 use as its context wrapper? `QueryClientProvider` in `App.tsx` — that's context. TanStack Query uses it to make the client cache available to every component."
 
 **Transition:** Hooks can be composed. Let's look at custom hooks — the pattern that makes React logic truly reusable.
 
@@ -985,45 +985,39 @@ function EmployeeListPage() {
 
 ---
 
-## Slide 23: In Our Project — `useEmployeesGQL`
+## Slide 23: In Our Project — `useEmployees`
 
-> **File:** `src/hooks/useEmployeesGQL.ts`
+> **File:** `src/hooks/useEmployees.ts`
 
 ```ts
-import { useQuery } from "@apollo/client";
-import { GET_EMPLOYEES } from "../graphql/queries";
-import type { Employee } from "../types/employee";
+import { useQuery } from "@tanstack/react-query";
+import { getEmployees } from "../services/api";
 
-interface GetEmployeesData {
-  users: { data: Employee[] };
-}
-
-export function useEmployeesGQL() {
-  const { data, loading, error } = useQuery<GetEmployeesData>(GET_EMPLOYEES);
-  return {
-    data: data?.users.data,
-    isLoading: loading,
-    isError: !!error,
-    error,
-  };
+// queryKey uniquely identifies this query in TanStack Query's cache.
+// Any component that calls useEmployees() shares the same cached data.
+export function useEmployees() {
+  return useQuery({
+    queryKey: ["employees"],
+    queryFn: getEmployees,
+  });
 }
 ```
 
-- Encapsulates GraphQL query + response normalisation
+- Wraps TanStack Query's `useQuery` — caching, loading and error states for free
 - Components see a clean `{ data, isLoading, isError }` interface
-- Swappable — `EmployeeListPage` doesn't know or care it's GraphQL
+- Swappable — `EmployeeListPage` doesn't know or care how the data is fetched
 
-> Session 2 covers `useQuery`, Apollo, and the GraphQL layer in full.
+> Session 2 covers TanStack Query in full — the cache model, mutations, and error handling.
 
 ---
 
 **SPEAKER NOTES**
 
-**What:** Shows a real custom hook in the codebase — wraps Apollo's `useQuery` and normalises the response shape.
+**What:** Shows the real custom hook in the codebase — wraps TanStack Query's `useQuery` and exposes a clean interface to the component.
 
-**Why it matters:** The interface `{ data, isLoading, isError }` is deliberately identical to what a REST hook would return. This is the adapter pattern — the page component is decoupled from the data layer.
+**Why it matters:** The `{ data, isLoading, isError }` shape is a stable contract. Swap the fetching implementation (REST today, GraphQL in Session 4) and the page component doesn't change at all. That's the adapter pattern in practice.
 
-**Ask the room:** "Can you identify the adapter pattern here? What changes if we swap GraphQL for REST? Only the hook internals — zero page-level changes."
+**Ask the room:** "What would you need to change in `EmployeeListPage` if you swapped `getEmployees` for a GraphQL query? Nothing — only the hook internals change."
 
 **Transition:** We've covered hooks. Before we break, let's look at performance — when and how to optimise re-renders.
 
@@ -1375,12 +1369,18 @@ Tailwind provides **pre-defined utility classes** — you compose design directl
 > **Trainer:** Style the EmployeeCard skeleton using Tailwind. This is the target — the component that already exists in the repo.
 
 ```tsx
-// src/components/EmployeeCard.tsx — the target state
+// src/components/EmployeeCard.tsx
+import type { Employee } from "../types/employee";
+
+interface EmployeeCardProps {
+  employee: Employee;
+  onClick?: () => void;
+}
+
 export function EmployeeCard({ employee, onClick }: EmployeeCardProps) {
   return (
     <article
-      className="bg-white rounded-lg border border-gray-200 p-6
-                 hover:shadow-md transition-shadow cursor-pointer"
+      className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer"
       onClick={onClick}
     >
       <div>
@@ -1552,9 +1552,12 @@ import { EmployeeCard } from "./EmployeeCard";
 const meta: Meta<typeof EmployeeCard> = {
   title: "Components/EmployeeCard",
   component: EmployeeCard,
-  tags: ["autodocs"], // generates a Docs tab automatically
-  parameters: { layout: "padded" },
+  tags: ["autodocs"],
+  parameters: {
+    layout: "padded",
+  },
 };
+
 export default meta;
 type Story = StoryObj<typeof EmployeeCard>;
 
@@ -1573,9 +1576,17 @@ const sampleEmployee = {
   },
 };
 
-export const Default: Story = { args: { employee: sampleEmployee } };
+export const Default: Story = {
+  args: {
+    employee: sampleEmployee,
+  },
+};
+
 export const WithClickHandler: Story = {
-  args: { employee: sampleEmployee, onClick: () => console.log("clicked") },
+  args: {
+    employee: sampleEmployee,
+    onClick: () => console.log("Card clicked"),
+  },
 };
 ```
 
@@ -1634,7 +1645,7 @@ function EmployeePage({ id }: { id: number }) {
 // ✅ Each component has one job
 function EmployeeDetailPage() {
   // orchestrates
-  const { data, isLoading } = useEmployeeGQL(id);
+  const { data, isLoading } = useEmployee(id);
   return <EmployeeProfile employee={data} />;
 }
 
@@ -1702,28 +1713,24 @@ src/
 ├── components/         # Shared presentational components
 │   ├── EmployeeCard.tsx
 │   ├── EmployeeCard.stories.tsx
-│   ├── EmployeeCard.test.tsx
 │   └── EmployeeList.tsx
 ├── pages/              # Route-level container components
 │   ├── EmployeeListPage.tsx
-│   ├── EmployeeDetailPage.tsx
-│   └── AddEmployeePage.tsx
+│   └── EmployeeDetailPage.tsx
 ├── hooks/              # Custom hooks (shared data/logic)
-│   ├── useEmployeesGQL.ts
-│   └── useEmployeeGQL.ts
-├── types/              # Shared TypeScript types
-│   └── employee.ts
-├── graphql/            # Query definitions
-│   └── queries.ts
-└── schemas/            # Validation schemas (Zod)
-    └── employee.schema.ts
+│   ├── useEmployees.ts
+│   └── useEmployee.ts
+├── services/           # API layer
+│   └── api.ts
+└── types/              # Shared TypeScript types
+    └── employee.ts
 ```
 
 **Naming conventions:**
 
 - Components: `PascalCase` — `EmployeeCard`, `EmployeeList`
-- Hooks: `camelCase` prefixed with `use` — `useEmployees`, `useEmployeesGQL`
-- Files: match the named export — `EmployeeCard.tsx`, `useEmployeesGQL.ts`
+- Hooks: `camelCase` prefixed with `use` — `useEmployees`, `useEmployee`
+- Files: match the named export — `EmployeeCard.tsx`, `useEmployees.ts`
 - Types/interfaces: `PascalCase` — `Employee`, `EmployeeCardProps`
 
 > Structure reflects responsibility. `pages/` = containers. `components/` = presentational. `hooks/` = reusable logic. `types/` = contracts.
@@ -1746,24 +1753,21 @@ src/
 
 ```
 App.tsx
-└── ApolloProvider (data context)
+└── QueryClientProvider (TanStack Query context)
     └── BrowserRouter (routing context)
         └── Routes
             ├── / → EmployeeListPage (container)
-            │         ├── useEmployeesGQL()  ← hook
+            │         ├── useEmployees()  ← TanStack Query hook
             │         └── EmployeeList (presentational)
             │               └── EmployeeCard (presentational) ← Session 1 target
             │
-            ├── /employees/:id → EmployeeDetailPage (container)
-            │                       └── useEmployeeGQL()
-            │
-            └── /employees/new → AddEmployeePage (container)
-                                    └── AddEmployeeForm (presentational-ish)
+            └── /employees/:id → EmployeeDetailPage (container)
+                                    └── useEmployee(id)
 ```
 
 **Today's milestone:** `EmployeeCard` — the leaf node. Typed, styled, Storybooked.
 
-**Session 2** moves up the tree — connecting `useEmployeesGQL` to a real API.
+**Session 2** moves up the tree — adding state management patterns and a validated Add Employee form.
 
 ---
 
@@ -1773,7 +1777,7 @@ App.tsx
 
 **Why it matters:** Engineers can see the forest, not just the trees. EmployeeCard being a leaf node is significant — it's the purest, most reusable part of the system.
 
-**Ask the room:** "Where is the ApolloProvider in the tree, and why does it have to be at the root? Any component below it can call useQuery — that's the context pattern from earlier."
+**Ask the room:** "Where is the QueryClientProvider in the tree, and why does it have to be at the root? Any component below it can call useQuery — that's the context pattern from earlier."
 
 **Transition:** Let's wrap up with the session checkpoint.
 
@@ -1831,7 +1835,7 @@ npm run storybook
 2. Render `name`, `company.name`, `email`, and `phone`
 3. Style it with Tailwind — reference the final version in `src/components/EmployeeCard.tsx`
 4. Write a story in `EmployeeCard.stories.tsx` with at least two named story variants
-5. Stretch goal: add a `EmployeeList` that maps over a hardcoded array and renders a grid of cards
+5. Stretch goal: add an `EmployeeList` that maps over a hardcoded array and renders a grid of cards
 
 ---
 
@@ -1882,7 +1886,7 @@ npm run storybook
 | `src/components/EmployeeCard.tsx`         | Session 1 target component                 |
 | `src/components/EmployeeCard.stories.tsx` | Storybook stories                          |
 | `src/pages/EmployeeListPage.tsx`          | Container — search state + rendering       |
-| `src/hooks/useEmployeesGQL.ts`            | Custom hook — Apollo + GraphQL             |
+| `src/hooks/useEmployees.ts`               | Custom hook — TanStack Query + REST        |
 | `src/App.tsx`                             | Root — routing and providers               |
 
 ---
