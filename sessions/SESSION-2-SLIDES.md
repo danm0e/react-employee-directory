@@ -1305,7 +1305,7 @@ export function AddEmployeePage() {
 // src/App.tsx — add the new route
 import { AddEmployeePage } from "./pages/AddEmployeePage";
 
-<Route path="/employees/new" element={<AddEmployeePage />} />
+<Route path="/employees/new" element={<AddEmployeePage />} />;
 ```
 
 ---
@@ -1540,6 +1540,19 @@ npm run dev
 | `src/components/AddEmployeeForm.tsx` | RHF + Zod form with accessibility          |
 | `src/pages/AddEmployeePage.tsx`      | Page wrapper + routing                     |
 | `src/App.tsx`                        | Routes + `QueryClientProvider`             |
+
+---
+
+### Useful Links
+
+| Topic                   | URL                                                             |
+| ----------------------- | --------------------------------------------------------------- |
+| TanStack Query docs     | https://tanstack.com/query/latest                               |
+| TanStack Query Devtools | https://tanstack.com/query/latest/docs/framework/react/devtools |
+| Zustand                 | https://github.com/pmndrs/zustand                               |
+| React Hook Form         | https://react-hook-form.com/                                    |
+| `@hookform/resolvers`   | https://github.com/react-hook-form/resolvers                    |
+| Zod                     | https://zod.dev/                                                |
 
 ---
 

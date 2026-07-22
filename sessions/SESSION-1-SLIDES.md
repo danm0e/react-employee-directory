@@ -1891,4 +1891,17 @@ npm run storybook
 
 ---
 
+### Useful Links
+
+| Topic             | URL                                                                     |
+| ----------------- | ----------------------------------------------------------------------- |
+| React             | https://react.dev/                                                      |
+| Vite              | https://vite.dev/                                                       |
+| Storybook         | https://storybook.js.org/                                               |
+| Storybook Add-ons | https://storybook.js.org/docs/configure/user-interface/storybook-addons |
+| Chromatic         | https://www.chromatic.com/storybook                                     |
+| Tailwind CSS      | https://tailwindcss.com/                                                |
+
+---
+
 _Session 1 · React Training Programme · 22 July_
