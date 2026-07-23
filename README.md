@@ -135,3 +135,37 @@ npm run test
 npx playwright install --with-deps chromium
 npm run test:e2e
 ```
+
+---
+
+## Sessions 1, 2 & 3 — Completed
+
+Full feature (list, detail, Add Employee form), unit tests, Playwright E2E, and accessibility fixes are all built and working on this branch.
+
+---
+
+## Session 4 Homework
+
+**Goal:** Migrate the data layer from TanStack Query (REST) to Apollo Client (GraphQL).
+
+### Setup
+
+```bash
+npm install @apollo/client graphql
+```
+
+### Steps
+
+1. **`src/lib/apolloClient.ts`** — connect to `graphqlzero.almansi.me/api` (see file for requirements)
+2. **`src/graphql/queries.ts`** — define `GET_EMPLOYEES`, `GET_EMPLOYEE`, `CREATE_EMPLOYEE` (see file for requirements)
+3. **`src/hooks/useEmployeesGQL.ts`** — return `{ data, isLoading, isError, error }` shape (see file for requirements)
+4. **`src/hooks/useEmployeeGQL.ts`** — with `skip: id <= 0` (see file for requirements)
+5. **`src/App.tsx`** — remove `QueryClientProvider`, add `ApolloProvider` with the client from step 1
+6. **`src/pages/EmployeeListPage.tsx`** — swap `useEmployees` import to `useEmployeesGQL` (one line)
+7. **`src/pages/EmployeeDetailPage.tsx`** — swap `useEmployee` import to `useEmployeeGQL` (one line)
+8. *(Stretch)* **`src/components/AddEmployeeForm.tsx`** — replace `fetch()` with Apollo `useMutation`
+
+### You're done when
+
+- `npm run dev` shows employee cards fetched from GraphQL
+- `npm run test:e2e` still passes
