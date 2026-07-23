@@ -15,7 +15,7 @@ export function AddEmployeePage() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-lg mx-auto">
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate(-1)}
             className="text-sm text-indigo-600 hover:text-indigo-800 mb-3 focus:outline-none focus:underline"
           >
             ← Back to directory
