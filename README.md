@@ -163,7 +163,7 @@ npm install @apollo/client graphql
 5. **`src/App.tsx`** — remove `QueryClientProvider`, add `ApolloProvider` with the client from step 1
 6. **`src/pages/EmployeeListPage.tsx`** — swap `useEmployees` import to `useEmployeesGQL` (one line)
 7. **`src/pages/EmployeeDetailPage.tsx`** — swap `useEmployee` import to `useEmployeeGQL` (one line)
-8. *(Stretch)* **`src/components/AddEmployeeForm.tsx`** — replace `fetch()` with Apollo `useMutation`
+8. _(Stretch)_ **`src/components/AddEmployeeForm.tsx`** — replace `fetch()` with Apollo `useMutation`
 
 ### You're done when
 
