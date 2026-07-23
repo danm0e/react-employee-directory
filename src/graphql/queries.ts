@@ -1,7 +1,6 @@
 // Session 4 homework: define GraphQL queries and mutations.
 //
-// Install first (if not already done):
-//   npm install @apollo/client graphql
+// Install first (if not already done): npm install @apollo/client graphql
 //
 // Requirements:
 //   - Import gql from "@apollo/client"

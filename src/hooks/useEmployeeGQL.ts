@@ -1,4 +1,5 @@
 // Session 4 homework: implement a GraphQL hook for fetching a single employee.
+// Install first (if not already done): npm install @apollo/client graphql
 //
 // Requirements:
 //   - Import useQuery from "@apollo/client" (after installing the package)
