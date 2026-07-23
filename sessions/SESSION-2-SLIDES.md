@@ -44,13 +44,16 @@
 
 ## Slide 2: Where We Left Off — Session 1 Recap
 
-**What was built in Session 1:**
+**What engineers built in Session 1:**
 
-- `src/types/employee.ts` — the `Employee` interface, shared contract across the app
+- `EmployeeCard` — styled, typed, Storybooked presentational component
+- `EmployeeList` — responsive grid with empty-state handling (stretch goal)
+- `src/types/employee.ts` — the `Employee` interface was pre-populated; engineers imported and used it
+
+**What comes pre-built on `session-2-start`:**
+
 - `src/services/api.ts` — `fetch` wrappers for the JSONPlaceholder REST API
 - `src/hooks/useEmployees.ts` / `useEmployee.ts` — TanStack Query hooks
-- `EmployeeCard` — styled, typed, Storybooked presentational component
-- `EmployeeList` — responsive grid with empty-state handling
 - `EmployeeListPage` / `EmployeeDetailPage` — container pages with loading and error states
 
 **What's already running on `session-2-start`:**
@@ -60,15 +63,15 @@ npm run dev       → 10 employee cards, click through to detail
 npm run storybook → EmployeeCard in the sidebar
 ```
 
-> `session-2-start` is the finished solution to the Session 1 homework. This is your starting point today.
+> The services, hooks, and pages are provided as the starting point for Session 2 — engineers do not need to build them.
 
 ---
 
 **SPEAKER NOTES**
 
-**What:** Quick recap so everyone is oriented — this is what they built as homework and what the branch already contains.
+**What:** Quick recap so everyone is oriented — what engineers built in Session 1, and what the branch provides as scaffolding.
 
-**Why it matters:** Engineers who didn't finish the homework can still follow along; they're working from the complete session-2-start rather than their own code.
+**Why it matters:** Engineers who didn't finish the homework can still follow along; the pre-built services and hooks mean the app already loads real data. Session 2 adds the form layer on top of that foundation.
 
 **Ask the room:** "Anything from Session 1 you want to revisit before we move on?"
 
@@ -1477,9 +1480,9 @@ npm run dev
 
 **SPEAKER NOTES**
 
-**What:** Clear homework steps directly from `SESSION.md`, and a preview of Session 3.
+**What:** Clear homework steps and a preview of Session 3.
 
-**Why it matters:** The homework is already in `SESSION.md` on the `session-2-start` branch — engineers have all they need there. The slide reinforces the key requirement: accessibility is not optional.
+**Why it matters:** The stub files on `session-2-start` each contain a TODO comment describing exactly what to build. The slide reinforces the key requirement: accessibility is not optional.
 
 **Ask the room:** "Any questions on the homework? The Zod schema is the hardest part — start there, then the form, then the plumbing."
 
