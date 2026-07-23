@@ -1,8 +1,15 @@
-// TODO (Session 4): Build a useQuery hook for fetching all employees via GraphQL.
+// Session 4 homework: implement a GraphQL hook for fetching all employees.
 //
-// Use useQuery from "@apollo/client" with GET_EMPLOYEES from "../graphql/queries".
-// Match the return shape of the existing useEmployees hook so EmployeeListPage
-// needs minimal changes:
-//   return { data, isLoading, isError, error }
+// Requirements:
+//   - Import useQuery from "@apollo/client" (after installing the package)
+//   - Import GET_EMPLOYEES from "../graphql/queries"
+//   - Define a GetEmployeesData interface: { users: { data: Employee[] } }
+//   - Call useQuery<GetEmployeesData>(GET_EMPLOYEES), destructure data, loading, error
+//   - Return { data: data?.users.data, isLoading: loading, isError: !!error, error }
+//     (same shape as useEmployees so EmployeeListPage only needs one import line changed)
+//
+// Reference: Session 4 slides — "useEmployeesGQL.ts"
 
-export {};
+export function useEmployeesGQL() {
+  return null;
+}

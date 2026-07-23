@@ -1,14 +1,16 @@
-// TODO (Session 4): Configure Apollo Client here.
+// Session 4 homework: configure Apollo Client.
 //
-// Install dependencies first:
+// Install first:
 //   npm install @apollo/client graphql
 //
-// Then create the client:
-//   import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
-//   const httpLink = new HttpLink({ uri: "https://graphqlzero.almansi.me/api" });
-//   export const apolloClient = new ApolloClient({ link: httpLink, cache: new InMemoryCache() });
+// Requirements:
+//   - Import ApolloClient, InMemoryCache, HttpLink from "@apollo/client"
+//   - Create an HttpLink pointing to https://graphqlzero.almansi.me/api
+//   - Export apolloClient as new ApolloClient({ link: httpLink, cache: new InMemoryCache() })
 //
 // Use the GraphiQL explorer to test queries before wiring them up:
 //   https://graphqlzero.almansi.me/api
+//
+// Reference: Session 4 slides — "Apollo Client Setup"
 
 export {};

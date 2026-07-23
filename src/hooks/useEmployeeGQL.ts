@@ -1,8 +1,16 @@
-// TODO (Session 4): Build a useQuery hook for fetching a single employee via GraphQL.
+// Session 4 homework: implement a GraphQL hook for fetching a single employee.
 //
-// Use useQuery from "@apollo/client" with GET_EMPLOYEE from "../graphql/queries".
-// Accept an id: number parameter and skip the query when id <= 0.
-// Match the return shape of the existing useEmployee hook:
-//   return { data, isLoading, isError, error }
+// Requirements:
+//   - Import useQuery from "@apollo/client" (after installing the package)
+//   - Import GET_EMPLOYEE from "../graphql/queries"
+//   - Accept an id: number parameter
+//   - Pass variables: { id: String(id) } and skip: id <= 0 to useQuery
+//   - Define a GetEmployeeData interface: { user: Employee }
+//   - Return { data: data?.user, isLoading: loading, isError: !!error, error }
+//     (same shape as useEmployee so EmployeeDetailPage only needs one import line changed)
+//
+// Reference: Session 4 slides — "useEmployeeGQL.ts"
 
-export {};
+export function useEmployeeGQL(_id: number) {
+  return null;
+}

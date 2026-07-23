@@ -1,10 +1,16 @@
-// TODO (Session 4): Define GraphQL queries and mutations here.
+// Session 4 homework: define GraphQL queries and mutations.
 //
-// Import gql from "@apollo/client" and define three operations:
-//   GET_EMPLOYEES — query to fetch all employees
-//   GET_EMPLOYEE  — query to fetch a single employee by $id: ID!
-//   CREATE_EMPLOYEE — mutation to simulate adding an employee
+// Install first (if not already done):
+//   npm install @apollo/client graphql
+//
+// Requirements:
+//   - Import gql from "@apollo/client"
+//   - Define GET_EMPLOYEES — fetches all users (id, name, email, phone, website, company, address)
+//   - Define GET_EMPLOYEE  — fetches a single user by $id: ID!
+//   - Define CREATE_EMPLOYEE — mutation using createUser($input: CreateUserInput!)
 //
 // Test your queries in the GraphiQL explorer: https://graphqlzero.almansi.me/api
+//
+// Reference: Session 4 slides — "Defining Queries in queries.ts"
 
 export {};
