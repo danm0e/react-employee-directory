@@ -135,3 +135,20 @@ npm run test
 npx playwright install --with-deps chromium
 npm run test:e2e
 ```
+
+---
+
+## Session 1 Homework
+
+**Goal:** A styled, typed `EmployeeCard` rendering mock data, documented in Storybook.
+
+### Steps
+
+1. **`src/components/EmployeeCard.tsx`** — define `EmployeeCardProps`, render the four fields, style with Tailwind (see file for requirements)
+2. **`src/components/EmployeeCard.stories.tsx`** — write at least two named story variants _(complete step 1 first)_
+3. _(Stretch)_ **`src/components/EmployeeList.tsx`** — render a responsive grid of cards (see file for requirements)
+
+### You're done when
+
+- `npm run dev` → employee names appear in the list; replacing the `<li>` placeholder with `<EmployeeCard>` renders styled cards
+- `npm run storybook` → two story variants for `EmployeeCard` are visible
