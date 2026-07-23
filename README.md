@@ -135,3 +135,34 @@ npm run test
 npx playwright install --with-deps chromium
 npm run test:e2e
 ```
+
+---
+
+## Sessions 1 & 2 — Completed
+
+`EmployeeCard`, `EmployeeList`, pages, `AddEmployeeForm` with validation, and all routing are built and working on this branch.
+
+---
+
+## Session 3 Homework
+
+**Goal:** Meaningful test coverage on core components, Playwright E2E covering the happy path, A11Y audit passing.
+
+### Steps
+
+1. **`src/components/EmployeeCard.test.tsx`** — render, content, and click handler tests (see file for requirements)
+2. **`src/components/AddEmployeeForm.test.tsx`** — validation errors, invalid email, success path with `fetch` mock (see file for requirements)
+3. Create **`playwright.config.ts`** and add `"test:e2e": "playwright test"` to `package.json`
+4. Install Playwright: `npx playwright install --with-deps chromium`
+5. **`e2e/employee-list.spec.ts`** — heading, 10 cards, search, navigation, back button (see file for requirements)
+
+**Accessibility tasks:**
+
+6. Fix `EmployeeCard` keyboard accessibility — replace `<article onClick>` with a `<Link>`
+7. Add `eslint-plugin-jsx-a11y` and fix any lint errors it surfaces
+
+### You're done when
+
+- `npm run test` is all green
+- `npm run test:e2e` passes
+- Keyboard-only navigation works across the full feature
