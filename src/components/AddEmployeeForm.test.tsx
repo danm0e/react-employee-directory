@@ -1,16 +1,25 @@
-// TODO (Session 3): Write unit tests for AddEmployeeForm here.
+// Session 3 homework: write unit tests for AddEmployeeForm.
 //
-// Use React Testing Library (render, screen) and Vitest (describe, it, expect, vi).
-// Stub globalThis.fetch using vi.stubGlobal before each test so no real
-// network requests are made.
+// Imports you will need:
+//   import { render, screen, waitFor } from "@testing-library/react"
+//   import userEvent from "@testing-library/user-event"
+//   import { AddEmployeeForm } from "./AddEmployeeForm"
+//
+// describe, it, expect, vi, and beforeEach are available as globals — no import needed.
+//
+// Stub fetch before each test so no real network requests are made:
+//   beforeEach(() => {
+//     vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true, json: async () => ({ id: 11 }) }));
+//   });
 //
 // Tests to write:
-//   - All four form fields are rendered
-//   - Submitting an empty form shows validation errors for required fields
-//   - An invalid email shows the "Enter a valid email address" error
-//   - Submitting a valid form calls onSuccess and shows the success banner
+//   1. All four form fields are rendered
+//   2. Submitting an empty form shows validation errors for required fields
+//   3. An invalid email shows the "Enter a valid email address" error
+//   4. Submitting a valid form shows the success banner
+//   5. Submitting a valid form calls onSuccess
 //
-// Tip: use userEvent.setup() from @testing-library/user-event for realistic
-// user interactions.
+// Reference: Session 3 slides — "Mocks — vi.fn() and vi.stubGlobal"
+//            Session 3 slides — "Async Patterns — findBy and waitFor"
 
 export {};

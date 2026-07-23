@@ -1,12 +1,21 @@
-// TODO (Session 3): Write unit tests for EmployeeCard here.
+// Session 3 homework: write unit tests for EmployeeCard.
 //
-// Use React Testing Library (render, screen) and Vitest (describe, it, expect, vi).
-// Run: npm run test
+// Imports you will need:
+//   import { render, screen } from "@testing-library/react"
+//   import userEvent from "@testing-library/user-event"
+//   import { EmployeeCard } from "./EmployeeCard"
+//   import type { Employee } from "../types/employee"
+//
+// describe, it, expect, and vi are available as globals — no import needed.
 //
 // Tests to write:
-//   - The employee name is rendered
-//   - The company name (department) is rendered
-//   - Email and phone appear in the output
-//   - The onClick callback is called when the card is clicked
+//   1. Renders the employee name
+//   2. Renders the company name
+//   3. Renders the email address
+//   4. Renders the phone number
+//   5. Calls onClick when the card is clicked
+//      (hint: const handleClick = vi.fn(); await user.click(...); expect(handleClick).toHaveBeenCalledOnce())
+//
+// Reference: Session 3 slides — "[LIVE CODE] Writing the First Unit Test"
 
 export {};
