@@ -1,15 +1,20 @@
-// TODO (Session 2): Build the AddEmployeeForm component here.
+// Session 2 homework: build a validated, accessible Add Employee form.
 //
-// Use useForm from "react-hook-form" with zodResolver to connect your schema.
-// The form should:
-//   - Have labelled inputs for name, email, phone, and department
-//   - Show inline validation error messages beneath each field
-//   - Display a success banner after a successful submission
-//   - Disable the submit button while submitting
+// Requirements:
+//   - Import useForm from "react-hook-form" and zodResolver from "@hookform/resolvers/zod"
+//   - Import employeeFormSchema and EmployeeFormValues from "../schemas/employee.schema"
+//   - Set up useForm<EmployeeFormValues> with resolver: zodResolver(employeeFormSchema)
+//   - Add four labelled fields: name, email, phone, department
+//   - Each field needs: <label htmlFor="id">, <input id="id" {...register("field")} />,
+//     and an error message: <p id="field-error" role="alert">{errors.field?.message}</p>
+//   - Set aria-invalid and aria-describedby on inputs that have an error
+//   - POST to https://jsonplaceholder.typicode.com/users in onSubmit, call reset() on success
+//   - Show a success banner when isSubmitSuccessful is true
+//   - Disable the submit button while isSubmitting
 //
-// Accessibility requirements:
-//   - Every <input> must have an associated <label> (use htmlFor / id)
-//   - Error messages must use role="alert" so screen readers announce them
-//   - Inputs must set aria-invalid and aria-describedby when in an error state
+// Reference: Session 2 slides — "React Hook Form — The Core API"
+//            Session 2 slides — "Form Accessibility — The Fundamentals"
 
-export {};
+export function AddEmployeeForm() {
+  return null;
+}

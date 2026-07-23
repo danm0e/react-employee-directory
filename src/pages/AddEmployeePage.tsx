@@ -1,13 +1,15 @@
-// TODO (Session 2): Build the AddEmployeePage here.
+// Session 2 homework: build the Add Employee page.
 //
-// This is a simple page wrapper that renders <AddEmployeeForm> with:
-//   - A page heading ("Add Employee")
-//   - A back button that navigates to the previous page (useNavigate / navigate(-1))
+// Requirements:
+//   - Import useNavigate from "react-router-dom"
+//   - Import AddEmployeeForm from "../components/AddEmployeeForm"
+//   - Render a page heading "Add Employee" and a back button using navigate(-1)
+//   - Render <AddEmployeeForm onSuccess={...} /> and navigate to "/" on success
+//   - Add the route in App.tsx: <Route path="/employees/new" element={<AddEmployeePage />} />
+//   - Add a <Link to="/employees/new"> in the EmployeeListPage header
 //
-// Once built, wire it up in App.tsx:
-//   <Route path="/employees/new" element={<AddEmployeePage />} />
-//
-// And add a navigation link in EmployeeListPage:
-//   <Link to="/employees/new">Add Employee</Link>
+// Reference: Session 2 slides — "In Our Project — AddEmployeePage and Routing"
 
-export {};
+export function AddEmployeePage() {
+  return null;
+}

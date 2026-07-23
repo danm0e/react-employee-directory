@@ -1,13 +1,14 @@
-// TODO (Session 2): Define the Zod validation schema here.
+// Session 2 homework: define the Zod validation schema for the Add Employee form.
 //
-// Import z from "zod" and use z.object({}) to define rules for:
-//   name       — required string
-//   email      — required, must be a valid email address
-//   phone      — optional; if provided, should match a basic phone pattern
-//   department — required string
+// Requirements:
+//   - Import z from "zod"
+//   - Define employeeFormSchema using z.object() with rules for:
+//       name:       required string
+//       email:      required, valid email format
+//       phone:      optional; validate format if provided
+//       department: required string
+//   - Export EmployeeFormValues as: z.infer<typeof employeeFormSchema>
 //
-// Export both the schema and the inferred TypeScript type:
-//   export const employeeFormSchema = z.object({ ... });
-//   export type EmployeeFormValues = z.infer<typeof employeeFormSchema>;
+// Reference: Session 2 slides — "Zod Schema — employee.schema.ts"
 
 export {};

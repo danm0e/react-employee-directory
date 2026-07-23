@@ -135,3 +135,29 @@ npm run test
 npx playwright install --with-deps chromium
 npm run test:e2e
 ```
+
+---
+
+## Session 1 — Completed
+
+`EmployeeCard`, `EmployeeList`, `EmployeeListPage`, and `EmployeeDetailPage` are all built and working on this branch.
+
+---
+
+## Session 2 Homework
+
+**Goal:** A validated Add Employee form, accessible at `/employees/new`.
+
+### Steps
+
+1. **`src/schemas/employee.schema.ts`** — define the Zod schema (see file for requirements)
+2. **`src/components/AddEmployeeForm.tsx`** — React Hook Form + `zodResolver`, accessible fields, success banner _(requires step 1)_
+3. **`src/pages/AddEmployeePage.tsx`** — page wrapper with heading and back button _(requires step 2)_
+4. **`src/App.tsx`** — add the `/employees/new` route
+5. **`src/pages/EmployeeListPage.tsx`** — add an "Add Employee" link in the header
+
+### You're done when
+
+- Submitting an empty form shows field-level validation errors
+- Submitting a valid form shows the success banner
+- `npm run build` completes without errors
