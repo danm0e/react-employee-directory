@@ -1,8 +1,20 @@
-// TODO (Session 1): Write Storybook stories for EmployeeCard here.
-//
-// 1. Import Meta and StoryObj from "@storybook/react"
-// 2. Define a meta object with title, component, tags: ["autodocs"], and parameters
-// 3. Create a sampleEmployee object using the Employee type
-// 4. Export at least two named stories: Default and WithClickHandler
+import type { Meta, StoryObj } from "@storybook/react";
+import { EmployeeCard } from "./EmployeeCard";
 
-export {};
+// The meta object registers this component in Storybook's sidebar.
+// tags: ["autodocs"] generates a documentation page from EmployeeCardProps.
+// Reference: Session 1 slides — "In Our Project — Storybook Autodocs"
+const meta: Meta<typeof EmployeeCard> = {
+  title: "Components/EmployeeCard",
+  component: EmployeeCard,
+  tags: ["autodocs"],
+  parameters: { layout: "padded" },
+};
+
+export default meta;
+type Story = StoryObj<typeof EmployeeCard>;
+
+// TODO: Export at least two named story variants: Default and WithClickHandler.
+// Once EmployeeCard accepts props, pass a sample employee via args:
+//   export const Default: Story = { args: { employee: { id: 1, name: "Leanne Graham", ... } } };
+export const Default: Story = {};
