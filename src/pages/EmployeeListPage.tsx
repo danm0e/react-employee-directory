@@ -1,10 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { employees } from "../mocks";
+import { employees } from "../mocks"; // Live demo step 4: swap for useEmployees from "../hooks/useEmployees"
 import { EmployeeList } from "../components/EmployeeList";
 
-// This page is pre-built. During Session 2 Hour 1 the trainer will migrate it
-// to use TanStack Query and live data — follow along in the session.
+// This page is pre-built and currently uses mock data.
+// During Session 2 Hour 1 the trainer will migrate it to live data.
+//
+// Changes made during the live demo:
+//   1. Build src/services/api.ts
+//   2. Build src/hooks/useEmployees.ts
+//   3. Build src/hooks/useEmployee.ts
+//   4. Replace the mock import above with: import { useEmployees } from "../hooks/useEmployees"
+//   5. Replace the employees.filter() line with:
+//        const { data: employees, isLoading, isError } = useEmployees();
+//        const filtered = (employees ?? []).filter(...)
+//   6. Add isLoading and isError guards before the return
 export function EmployeeListPage() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();

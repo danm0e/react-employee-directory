@@ -1,8 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { employees } from "../mocks";
+import { employees } from "../mocks"; // Live demo step 3: swap for useEmployee from "../hooks/useEmployee"
 
-// This page is pre-built. During Session 2 Hour 1 the trainer will migrate it
-// to use TanStack Query and live data — follow along in the session.
+// This page is pre-built and currently uses mock data.
+// During Session 2 Hour 1 the trainer will migrate it to live data.
+//
+// Changes made during the live demo:
+//   1. Replace the mock import above with: import { useEmployee } from "../hooks/useEmployee"
+//   2. Replace the employees.find() line with:
+//        const { data: employee, isLoading, isError } = useEmployee(Number(id))
+//   3. Add isLoading and isError guards before the return
 export function EmployeeDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
