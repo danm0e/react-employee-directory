@@ -140,7 +140,19 @@ npm run test:e2e
 
 ## Session 1 — Completed
 
-`EmployeeCard`, `EmployeeList`, `EmployeeListPage`, and `EmployeeDetailPage` are all built and working on this branch.
+`EmployeeCard`, `EmployeeList`, and mock-data list and detail pages are built and working on this branch.
+
+---
+
+## Session 2 — Live Demo (Hour 1)
+
+The trainer will build these live during the session. Follow along, or reference `session-3-start` for the finished result:
+
+1. **`src/services/api.ts`** — fetch wrappers for the JSONPlaceholder REST API
+2. **`src/hooks/useEmployees.ts`** — TanStack Query hook for the employee list
+3. **`src/hooks/useEmployee.ts`** — TanStack Query hook for a single employee
+4. **`src/pages/EmployeeListPage.tsx`** — swap mock data for the `useEmployees` hook
+5. **`src/pages/EmployeeDetailPage.tsx`** — swap mock data for the `useEmployee` hook
 
 ---
 

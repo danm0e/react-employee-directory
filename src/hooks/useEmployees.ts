@@ -1,11 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import { getEmployees } from "../services/api";
+// Session 2 live demo: build the TanStack Query hook for the employee list.
+//
+// Requirements:
+//   - Import useQuery from "@tanstack/react-query"
+//   - Import getEmployees from "../services/api"
+//   - Return useQuery({ queryKey: ["employees"], queryFn: getEmployees })
+//
+// Reference: Session 2 slides — "useQuery — The Core API"
 
-// queryKey uniquely identifies this query in TanStack Query's cache.
-// Any component that calls useEmployees() shares the same cached data.
 export function useEmployees() {
-  return useQuery({
-    queryKey: ["employees"],
-    queryFn: getEmployees,
-  });
+  return null;
 }

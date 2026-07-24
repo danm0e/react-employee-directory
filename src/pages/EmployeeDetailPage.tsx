@@ -1,22 +1,15 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useEmployee } from "../hooks/useEmployee";
+import { employees } from "../mocks";
 
+// This page is pre-built. During Session 2 Hour 1 the trainer will migrate it
+// to use TanStack Query and live data — follow along in the session.
 export function EmployeeDetailPage() {
-  // useParams returns an object whose values are always strings (or undefined).
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const { data: employee, isLoading, isError } = useEmployee(Number(id));
+  const employee = employees.find((e) => e.id === Number(id));
 
-  if (isLoading) {
-    return (
-      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-500">Loading employee…</p>
-      </main>
-    );
-  }
-
-  if (isError || !employee) {
+  if (!employee) {
     return (
       <main className="min-h-screen bg-gray-50 flex items-center justify-center">
         <p className="text-red-600">Employee not found.</p>

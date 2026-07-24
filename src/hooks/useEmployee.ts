@@ -1,12 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
-import { getEmployee } from "../services/api";
+// Session 2 live demo: build the TanStack Query hook for a single employee.
+//
+// Requirements:
+//   - Import useQuery from "@tanstack/react-query"
+//   - Import getEmployee from "../services/api"
+//   - Accept an id: number parameter
+//   - Return useQuery({ queryKey: ["employee", id], queryFn: () => getEmployee(id), enabled: id > 0 })
+//
+// Reference: Session 2 slides — "useQuery — The Core API"
 
-// enabled: false when id is falsy prevents the query from running before the
-// URL param is available.
-export function useEmployee(id: number) {
-  return useQuery({
-    queryKey: ["employee", id],
-    queryFn: () => getEmployee(id),
-    enabled: id > 0,
-  });
+export function useEmployee(_id: number) {
+  return null;
 }

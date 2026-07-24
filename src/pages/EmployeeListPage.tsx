@@ -1,35 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEmployees } from "../hooks/useEmployees";
+import { employees } from "../mocks";
 import { EmployeeList } from "../components/EmployeeList";
 
+// This page is pre-built. During Session 2 Hour 1 the trainer will migrate it
+// to use TanStack Query and live data — follow along in the session.
 export function EmployeeListPage() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  const { data: employees, isLoading, isError } = useEmployees();
 
-  // Client-side filtering — no extra network request needed.
-  const filtered = (employees ?? []).filter((e) =>
+  const filtered = employees.filter((e) =>
     e.name.toLowerCase().includes(search.toLowerCase()),
   );
-
-  if (isLoading) {
-    return (
-      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-500">Loading employees…</p>
-      </main>
-    );
-  }
-
-  if (isError) {
-    return (
-      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-red-600">
-          Failed to load employees. Please try again.
-        </p>
-      </main>
-    );
-  }
 
   return (
     <main className="min-h-screen bg-gray-50">
