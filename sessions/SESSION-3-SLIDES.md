@@ -541,7 +541,51 @@ describe("AddEmployeeForm — success", () => {
 
 **Ask the room:** "What does `onSuccess` being a `vi.fn()` let us assert? That the parent component was notified — we can verify the callback contract without caring about what the parent does with it."
 
-**Transition:** Unit and integration tests cover components in isolation. E2E tests cover the full user journey in a real browser. That's Playwright.
+**Transition:** Unit and integration tests cover components in isolation. Before we move to full user journey testing, let's take a look at the browser tooling you'll reach for when something isn't behaving as expected.
+
+---
+
+## Slide 12a: [LIVE DEMO] Debugging React Apps — DevTools Walkthrough
+
+> **Demo lead:** Walk through each tool on the live running app. No slides needed beyond this one — the browser is the demo.
+
+**1. React DevTools — Components tab**
+
+- Inspect the `EmployeeListPage` component tree — show props flowing down to `EmployeeCard`
+- Pick a single card, inspect its `employee` prop live
+- Edit the `search` state value directly in DevTools — watch the list filter in real time
+
+**2. TanStack Query DevTools** _(installed on this branch — look for the panel icon)_
+
+- Show the `["employees"]` query after the list loads — inspect status, data, and last-updated timestamp
+- Navigate to a detail page — watch `["employee", 1]` appear as a new cache entry
+- Switch to another browser tab and return — watch the background refetch trigger automatically
+- Point out: stale → fetching → fresh state transitions
+
+**3. Browser Console — React warnings**
+
+- Temporarily comment out the `key` prop on a list item — show the missing-key warning and the component stack trace
+- Restore the `key` prop — warning disappears
+- React 18 component stacks are meaningful — point out the component name in the trace
+
+**4. Network tab**
+
+- Show the `GET /users` request firing on initial load
+- Navigate to a detail page — show `GET /users/1`
+- Navigate back to the list — **no new request** (TanStack cache hit)
+- This is the caching story made visible
+
+---
+
+**SPEAKER NOTES**
+
+**What:** A practical debugging walkthrough using the tools engineers will reach for day-to-day. Serves as a Session 2 recap with deeper focus on the tooling layer.
+
+**Why it matters:** Backend engineers are comfortable with IDE debuggers and server logs. Browser DevTools and React DevTools are the frontend equivalent — unfamiliar at first, but essential. The cache hit on the Network tab is the "aha moment" for TanStack Query — zero network requests on navigate-back makes the caching story visceral rather than theoretical.
+
+**Ask the room:** "When a component isn't showing the data you expect, what's your first move? React DevTools to confirm the props arrived correctly, then the Network tab to confirm the data came back from the API. Don't guess — look."
+
+**Transition:** Now we can verify component behaviour with unit tests and inspect the runtime with DevTools. The missing piece is full end-to-end coverage across page boundaries in a real browser. That's Playwright.
 
 ---
 
