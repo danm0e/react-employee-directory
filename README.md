@@ -131,7 +131,7 @@ npm run storybook
 # Run unit tests (Vitest)
 npm run test
 
-# Run E2E tests — session-4-start and solution branches only
+# Run E2E tests — set up during Session 3 homework (see steps below)
 npx playwright install --with-deps chromium
 npm run test:e2e
 ```
