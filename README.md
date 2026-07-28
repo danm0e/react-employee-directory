@@ -148,11 +148,6 @@ npm run test:e2e
 
 **Goal:** Meaningful test coverage on core components, Playwright E2E covering the happy path, A11Y audit passing.
 
-### Setup
-
-1. Run `npm i`
-2. Run `npx playwright install`
-
 ### Steps
 
 1. **`src/components/EmployeeCard.test.tsx`** — render, content, and click handler tests (see file for requirements)
