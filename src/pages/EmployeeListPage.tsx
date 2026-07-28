@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEmployeesGQL } from "../hooks/useEmployeesGQL";
 import { EmployeeList } from "../components/EmployeeList";
 
 export function EmployeeListPage() {
   const [search, setSearch] = useState("");
-  const navigate = useNavigate();
 
   // Swapped from useEmployees (TanStack + REST) to useEmployeesGQL (Apollo + GraphQL).
   // The return shape is identical so no further JSX changes were needed.
@@ -64,10 +63,7 @@ export function EmployeeListPage() {
           />
         </div>
 
-        <EmployeeList
-          employees={filtered}
-          onSelectEmployee={(id) => navigate(`/employees/${id}`)}
-        />
+        <EmployeeList employees={filtered} />
       </div>
     </main>
   );
