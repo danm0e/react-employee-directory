@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEmployees } from "../hooks/useEmployees";
 import { EmployeeList } from "../components/EmployeeList";
 
 export function EmployeeListPage() {
   const [search, setSearch] = useState("");
-  const navigate = useNavigate();
   const { data: employees, isLoading, isError } = useEmployees();
 
   const filtered = (employees ?? []).filter((e) =>
@@ -61,10 +60,7 @@ export function EmployeeListPage() {
           />
         </div>
 
-        <EmployeeList
-          employees={filtered}
-          onSelectEmployee={(id) => navigate(`/employees/${id}`)}
-        />
+        <EmployeeList employees={filtered} />
       </div>
     </main>
   );

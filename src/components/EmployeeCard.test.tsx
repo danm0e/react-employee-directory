@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, it, expect, vi } from "vitest";
+import { MemoryRouter } from "react-router-dom";
+import { describe, it, expect } from "vitest";
 import { EmployeeCard } from "./EmployeeCard";
 import type { Employee } from "../types/employee";
 
@@ -21,40 +22,57 @@ const mockEmployee: Employee = {
 
 describe("EmployeeCard", () => {
   it("renders the employee name", () => {
-    render(<EmployeeCard employee={mockEmployee} />);
+    render(
+      <MemoryRouter>
+        <EmployeeCard employee={mockEmployee} />
+      </MemoryRouter>,
+    );
     expect(screen.getByText("Leanne Graham")).toBeInTheDocument();
   });
 
   it("renders the department (company name)", () => {
-    render(<EmployeeCard employee={mockEmployee} />);
+    render(
+      <MemoryRouter>
+        <EmployeeCard employee={mockEmployee} />
+      </MemoryRouter>,
+    );
     expect(screen.getByText("Romaguera-Crona")).toBeInTheDocument();
   });
 
   it("renders the email address", () => {
-    render(<EmployeeCard employee={mockEmployee} />);
+    render(
+      <MemoryRouter>
+        <EmployeeCard employee={mockEmployee} />
+      </MemoryRouter>,
+    );
     expect(screen.getByText("sincere@april.biz")).toBeInTheDocument();
   });
 
   it("renders the phone number", () => {
-    render(<EmployeeCard employee={mockEmployee} />);
+    render(
+      <MemoryRouter>
+        <EmployeeCard employee={mockEmployee} />
+      </MemoryRouter>,
+    );
     expect(screen.getByText("1-770-736-8031 x56442")).toBeInTheDocument();
   });
 
-  it("calls onClick when the card is clicked", async () => {
-    const user = userEvent.setup();
-    const handleClick = vi.fn();
-    render(<EmployeeCard employee={mockEmployee} onClick={handleClick} />);
-
-    await user.click(screen.getByRole("article"));
-
-    expect(handleClick).toHaveBeenCalledOnce();
+  it("renders a link to the employee detail page", () => {
+    render(
+      <MemoryRouter>
+        <EmployeeCard employee={mockEmployee} />
+      </MemoryRouter>,
+    );
+    expect(screen.getByRole("link")).toHaveAttribute("href", "/employees/1");
   });
 
-  it("does not throw when onClick is not provided", async () => {
+  it("navigates on click without throwing", async () => {
     const user = userEvent.setup();
-    render(<EmployeeCard employee={mockEmployee} />);
-
-    // Should not throw
-    await user.click(screen.getByRole("article"));
+    render(
+      <MemoryRouter>
+        <EmployeeCard employee={mockEmployee} />
+      </MemoryRouter>,
+    );
+    await user.click(screen.getByRole("link"));
   });
 });

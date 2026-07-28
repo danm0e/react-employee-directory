@@ -3,13 +3,9 @@ import { EmployeeCard } from "./EmployeeCard";
 
 interface EmployeeListProps {
   employees: Employee[];
-  onSelectEmployee: (id: number) => void;
 }
 
-export function EmployeeList({
-  employees,
-  onSelectEmployee,
-}: EmployeeListProps) {
+export function EmployeeList({ employees }: EmployeeListProps) {
   if (employees.length === 0) {
     return (
       <p className="text-center text-gray-500 py-12">No employees found.</p>
@@ -23,10 +19,7 @@ export function EmployeeList({
     >
       {employees.map((employee) => (
         <li key={employee.id}>
-          <EmployeeCard
-            employee={employee}
-            onClick={() => onSelectEmployee(employee.id)}
-          />
+          <EmployeeCard employee={employee} />
         </li>
       ))}
     </ul>
