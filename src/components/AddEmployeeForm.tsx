@@ -53,12 +53,15 @@ export function AddEmployeeForm({ onSuccess }: AddEmployeeFormProps) {
       )}
 
       <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Full Name <span aria-hidden="true">*</span>
-        </label>
+        <div className="flex flex-row items-center gap-1">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Full Name
+          </label>
+          <span aria-hidden="true">*</span>
+        </div>
         <input
           id="name"
           type="text"
@@ -76,12 +79,17 @@ export function AddEmployeeForm({ onSuccess }: AddEmployeeFormProps) {
       </div>
 
       <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Email <span aria-hidden="true">*</span>
-        </label>
+        <div className="flex flex-row items-center gap-1">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Email
+          </label>
+          <span aria-hidden="true" className="text-red-600">
+            *
+          </span>
+        </div>
         <input
           id="email"
           type="email"
@@ -130,12 +138,15 @@ export function AddEmployeeForm({ onSuccess }: AddEmployeeFormProps) {
       </div>
 
       <div>
-        <label
-          htmlFor="department"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Department <span aria-hidden="true">*</span>
-        </label>
+        <div className="flex flex-row items-center gap-1">
+          <label
+            htmlFor="department"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Department
+          </label>
+          <span aria-hidden="true">*</span>
+        </div>
         <input
           id="department"
           type="text"
