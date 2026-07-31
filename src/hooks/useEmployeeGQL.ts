@@ -2,7 +2,7 @@
 // Install first (if not already done): npm install @apollo/client graphql
 //
 // Requirements:
-//   - Import useQuery from "@apollo/client" (after installing the package)
+//   - Import useQuery from "@apollo/client/react" (after installing the package)
 //   - Import GET_EMPLOYEE from "../graphql/queries"
 //   - Accept an id: number parameter
 //   - Pass variables: { id: String(id) } and skip: id <= 0 to useQuery

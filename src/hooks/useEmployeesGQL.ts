@@ -2,7 +2,7 @@
 // Install first (if not already done): npm install @apollo/client graphql
 //
 // Requirements:
-//   - Import useQuery from "@apollo/client" (after installing the package)
+//   - Import useQuery from "@apollo/client/react" (after installing the package)
 //   - Import GET_EMPLOYEES from "../graphql/queries"
 //   - Define a GetEmployeesData interface: { users: { data: Employee[] } }
 //   - Call useQuery<GetEmployeesData>(GET_EMPLOYEES), destructure data, loading, error
